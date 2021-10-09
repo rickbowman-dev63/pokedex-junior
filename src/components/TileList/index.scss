@@ -1,0 +1,50 @@
+$amount: 5;
+$maxRows: 20;
+.tile-layout {
+  &__grid {
+    display: grid;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    grid-template-columns: repeat($amount, 1fr 2fr) 1fr;
+    grid-gap: 1rem 2rem;
+  }
+
+  &__grid-item {
+    --counter: 1;
+    position: relative;
+    grid-column: 1 / span 3;
+    grid-row: calc(var(--counter) + var(--counter)) / span 2;
+    height: 0;
+    padding-bottom: 90%;
+
+    // columns
+    @for $i from 1 through $amount {
+      &:nth-of-type(#{$amount}n + #{$i}) {
+        grid-column: #{$i + $i - 1} / span 3;
+        @if $i % 2 == 0 {
+          grid-row: calc(var(--counter) + var(--counter) - 1) / span 2;
+        }
+      }
+    }
+
+    // rows
+    @for $i from 1 through $maxRows {
+      &:nth-of-type(n + #{$i * $amount + 1}) {
+        --counter: #{$i + 1};
+      }
+    }
+
+    &::nth-of-type(n + 6) {
+      --counter: 2;
+    }
+
+    &::nth-of-type(n + 6) {
+      --counter: 3;
+    }
+
+    &::nth-of-type(n + 6) {
+      --counter: 4;
+    }
+  }
+}

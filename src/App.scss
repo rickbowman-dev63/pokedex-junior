@@ -1,0 +1,14 @@
+.app {
+  @import url("https://fonts.googleapis.com/css2?family=Kufam&display=swap");
+  text-align: center;
+  font-family: "Kufam", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &__header-text {
+    margin-top: 0;
+    padding-top: 3rem;
+    margin-bottom: 4rem;
+    color: #fff;
+  }
+}
